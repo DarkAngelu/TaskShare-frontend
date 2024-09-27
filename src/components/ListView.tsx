@@ -11,7 +11,7 @@ type Task = {
 	dueDate?: Date | null;
 };
 
-export default function ListView({ tasks, onTaskClick, onDeleteTask }: { tasks: Task[], onTaskClick: (task: Task) => void, onDeleteTask: (id: string) => void }) {
+export default function ListView({ tasks, onTaskClick, onDeleteTask } ) {
 	return (
 		<div className="space-y-2">
 			{tasks.map((task) => (
