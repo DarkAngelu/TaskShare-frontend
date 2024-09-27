@@ -192,21 +192,28 @@ const KanbanBoard = ({ onTaskClick, onDeleteTask }) => {
 		id: string,
 		newStatus: "todo" | "inprogress" | "completed"
 	) => {
+        if (token) {
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        } else {
+            window.location.href = "/login";
+        }
+        
+        const response = await axios.get(baseUrl + "/api/");
+        if (response.status !== 200) {
+            window.location.href = "/login";
+        }
+
 		if (!tasks) return;
+
 		for (let i = 0; i < tasks?.length; i++) {
 			if (tasks[i]._id === id) {
-				await axios.put(
-					baseUrl + "api/tasks/" + id,
-					{ ...tasks[i], status: newStatus },
-					{
-						headers: {
-							Authorization: `Bearer ${token}`,
-						},
-					}
-				);
+				await axios.put(baseUrl + "/api/tasks/" + id, {
+                    ...tasks[i], status: newStatus 
+                });
 				break;
 			}
 		}
+
 		setTasks((prevTasks: any) =>
 			prevTasks.map((task: any) =>
 				task._id === id ? { ...task, status: newStatus } : task
