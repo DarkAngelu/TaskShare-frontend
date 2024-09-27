@@ -26,7 +26,7 @@ export default function TaskDetailDialog({
 }) {
 	const [editedTask, setEditedTask] = useState(task);
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+	const handleChange: any = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 		setEditedTask({ ...editedTask, [e.target.name]: e.target.value });
 	};
 
