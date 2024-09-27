@@ -196,7 +196,7 @@ const KanbanBoard = ({ onTaskClick, onDeleteTask }) => {
 		for (let i = 0; i < tasks?.length; i++) {
 			if (tasks[i]._id === id) {
 				await axios.put(
-					"http://localhost:4000/" + "api/tasks/" + id,
+					baseUrl + "api/tasks/" + id,
 					{ ...tasks[i], status: newStatus },
 					{
 						headers: {
