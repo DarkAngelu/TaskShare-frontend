@@ -154,7 +154,7 @@ const Column: React.FC<{
 	);
 };
 
-const KanbanBoard = ({ onTaskClick, onDeleteTask }: { onTaskClick: (task: Task) => void, onDeleteTask: (id: string) => void }) => {
+const KanbanBoard = ({ onTaskClick, onDeleteTask }: { onTaskClick: (task: Task) => void, onDeleteTask: (taskId: string) => Promise<void> }) => {
 	const [tasks, setTasks] = useState<Task[]>();
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL

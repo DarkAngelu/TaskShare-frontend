@@ -24,7 +24,7 @@ type Task = {
 	description?: string;
 	status: "todo" | "inprogress" | "completed";
 	priority: "low" | "medium" | "high";
-	dueDate?: Date;
+	dueDate?: Date | null;
 };
 
 export default function TaskManagement() {
@@ -235,7 +235,7 @@ export default function TaskManagement() {
 
 			{view === "kanban" ? (
 				<KanbanView
-					onTaskClick={setSelectedTask}
+                    onTaskClick={setSelectedTask}
 					onDeleteTask={deleteTask}
 				/>
 			) : (

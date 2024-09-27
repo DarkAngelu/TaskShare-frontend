@@ -8,7 +8,7 @@ type Task = {
 	description?: string;
 	status: "todo" | "inprogress" | "completed";
 	priority: "low" | "medium" | "high";
-	dueDate?: Date;
+	dueDate?: Date | null;
 };
 
 export default function ListView({ tasks, onTaskClick, onDeleteTask }: { tasks: Task[], onTaskClick: (task: Task) => void, onDeleteTask: (id: string) => void }) {
